@@ -12,9 +12,21 @@
         <input id="file-upload" type="file" style="display:none;">
         Select an Image
       </label>
+      <button id="upload_widget" class="cloudinary-button">Upload files</button>
     </div>
     <!-- Scripts -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
     <script src="/public/scripts/app.js"></script>
+    <script type="text/javascript">
+      var myWidget = cloudinary.createUploadWidget({
+        cloudName: 'my_cloud_name',
+        uploadPreset: 'my_preset'
+      }, (error, result) => { console.log(error, result) })
+
+      document.getElementById("upload_widget").addEventListener("click", function () {
+        myWidget.open();
+      }, false);
+    </script>
   </body>
 </html>
